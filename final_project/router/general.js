@@ -51,7 +51,7 @@ public_users.get('/author/:author', function (req, res) {
         return res.status(404).json({ message: "No books found for this author" });
     }
 
-    return res.status(200).json(filteredBooks);
+    return res.status(200).send(JSON.stringify(filteredBooks, null, 4));
 });
 
 // Get all books based on title
@@ -66,7 +66,8 @@ public_users.get('/title/:title', function (req, res) {
         return res.status(404).json({ message: "No books found with this title" });
     }
 
-    return res.status(200).json(filteredBooks);
+    // return res.status(200).json(filteredBooks);
+    return res.status(200).send(JSON.stringify(filteredBooks, null, 4));
 });
 
 //  Get book review
@@ -79,7 +80,8 @@ public_users.get('/review/:isbn', function (req, res) {
         return res.status(404).json({ message: "Book not found" });
     }
 
-    return res.status(200).json(book.reviews);
+    // return res.status(200).json(book.reviews);
+    return res.status(200).send(JSON.stringify(book.reviews, null, 4));
 });
 
 module.exports.general = public_users;
